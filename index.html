@@ -4,7 +4,20 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="icon" type="image/png" href="image/favicon.ico">
-    <title>♥ Cậu Ơi! ♥</title>
+    <title>♥ Chúc bạn 20-10 vui vẻ! ♥</title>
+
+    <!-- Added Open Graph metadata for better link previews -->
+    <meta property="og:title" content="♥ Chúc bạn 20-10 vui vẻ! ♥">
+    <meta property="og:description" content="Gửi lời chúc 20/10 đến bạn">
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/124508462?v=4">
+    <meta property="og:url" content="https://wish-you-all.vercel.app/">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="♥ Chúc bạn 20-10 vui vẻ! ♥">
+    <meta name="twitter:description" content="Gửi lời chúc 20/10 đến bạn">
+    <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/124508462?v=4">
+
     <link rel="icon" href="assets/img/icon-facebook-cute.png" type="image/x-icon" />
     <link type="text/css" rel="stylesheet" href="assets/css/default.css">
     <script type="text/javascript" src="assets/js/jquery.min.js"></script>
@@ -26,7 +39,7 @@
 </head>
 
 <body>
-    <audio autoplay="autoplay">
+    <audio id="background-audio" loop>
         <source src="assets/music/I-Do-911.mp3" type="audio/mp3" />
     </audio>
     <div id="main">
@@ -36,7 +49,7 @@
                     <font color="#0000FF"><span class="say"> Hey girl!</span><br>
                         <span class="say"> </span><br>
                         <span class="say">Không chỉ 20-10 mà bất kì ngày nào cũng hãy sống hết mình bạn nhé!</span><br>
-                        <span class="say">Bạn xứng đáng với tất cả những điều tuyệt vời nhất!</span><br>
+                        <span class="say">Bạn xứng đáng với tất cả những điều tuyệt vời nhất ♥</span><br>
                         <span class="say"><span class="space"></span>♥ Chúc bạn 20-10 vui vẻ ♥</span>
                     </font>
                     </p>
@@ -44,7 +57,7 @@
             </div>
             <div id="clock-box">
                 <span class="STYLE1"></span>
-                <font color="#FF0000"> Chúc mừng Ngày Phụ nữ Việt Nam ♥ </font>
+                <font color="#FF0000"> Chúc bạn 20-10 ngập tràn niềm vui ♥ </font>
                 <div id="clock"></div>
             </div>
             <canvas id="canvas" width="1100" height="680"></canvas>
@@ -56,6 +69,31 @@
     </script>
 
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var audio = document.getElementById('background-audio');
+            var audioStarted = false;
+
+            function startAudio() {
+                if (!audioStarted) {
+                    audio.muted = false;
+                    audio.play().then(() => {
+                        audioStarted = true;
+                        console.log('Audio started successfully');
+                    }).catch(error => {
+                        console.log('Audio play failed:', error);
+                    });
+                }
+            }
+
+            // Bắt đầu phát nhạc khi có bất kỳ tương tác nào với trang
+            document.addEventListener('click', startAudio, { once: true });
+            document.addEventListener('keydown', startAudio, { once: true });
+            document.addEventListener('touchstart', startAudio, { once: true });
+
+            // Không hiển thị controls cho audio
+            audio.controls = false;
+        });
+
         (function () {
             var canvas = $('#canvas');
 
