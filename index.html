@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="icon" type="image/png" href="image/favicon.ico">
-    <title>♥ Chúc bạn 20-10 vui vẻ! ♥</title>
+    <title>♥ HLinh Cutephomaique ♥</title>
     <meta name="description" content="Gửi lời chúc 20/10 đến bạn">
 
     <!-- Open Graph meta tags for Facebook -->
@@ -58,7 +58,8 @@
                             mình bạn nhé!</span><br>
                         <span class="say" style="font-size: 20px;">Bạn xứng đáng với tất cả những điều tuyệt vời nhất
                             ♥</span><br>
-                        <span class="say" style="font-size: 20px;"><span class="space"></span>♥ Chúc bạn 20-10 vui vẻ
+                        <span class="say" id="greeting" style="font-size: 20px;"><span class="space"></span>♥ Chúc bạn
+                            20-10 vui vẻ
                             ♥</span>
                     </font>
                     </p>
@@ -66,7 +67,7 @@
             </div>
             <div id="clock-box">
                 <span class="STYLE1"></span>
-                <font color="#FF0000"> Chúc bạn 20-10 ngập tràn niềm vui ♥ </font>
+                <font color="#FF0000" id="dynamic-greeting"> Chúc bạn 20-10 ngập tràn niềm vui ♥ </font>
                 <div id="clock"></div>
             </div>
             <canvas id="canvas" width="1100" height="680"></canvas>
@@ -89,7 +90,7 @@
                         audioStarted = true;
                         console.log('Audio started successfully');
                     }).catch(error => {
-                        console.log('Audio play failed:', error);
+                        console.log('Audio play failed');
                     });
                 }
             }
@@ -101,6 +102,18 @@
 
             // Không hiển thị controls cho audio
             audio.controls = false;
+
+            // Lấy ngày và tháng hiện tại
+            var currentDate = new Date();
+            var day = currentDate.getDate();
+            var month = currentDate.getMonth() + 1;
+
+            // Cập nhật nội dung chúc mừng
+            var greetingElement = document.getElementById('greeting');
+            greetingElement.innerHTML = `<span class="space"></span>♥ Chúc bạn ${day}-${month} vui vẻ ♥`;
+
+            var dynamicGreetingElement = document.getElementById('dynamic-greeting');
+            dynamicGreetingElement.innerHTML = `Chúc bạn ${day}-${month} ngập tràn niềm vui ♥`;
         });
 
         (function () {
